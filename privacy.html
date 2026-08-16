@@ -1,0 +1,130 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>プライバシーポリシー — EDR-Logger（GPS）</title>
+<style>
+  :root {
+    --ink: #1c1c1e;
+    --ink-soft: #55555b;
+    --ground: #ffffff;
+    --rule: #dcdce1;
+    --mark: #0b5c8a;
+    --note-bg: #f4f6f8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #e8e8ea;
+      --ink-soft: #a2a2a9;
+      --ground: #16171a;
+      --rule: #33343a;
+      --mark: #6fb8e0;
+      --note-bg: #1e2024;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #e8e8ea; --ink-soft: #a2a2a9; --ground: #16171a;
+    --rule: #33343a; --mark: #6fb8e0; --note-bg: #1e2024;
+  }
+  :root[data-theme="light"] {
+    --ink: #1c1c1e; --ink-soft: #55555b; --ground: #ffffff;
+    --rule: #dcdce1; --mark: #0b5c8a; --note-bg: #f4f6f8;
+  }
+
+  html { background: var(--ground); }
+  body {
+    margin: 0 auto;
+    max-width: 42rem;
+    padding: 3rem 1.25rem 5rem;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    font-size: 16px;
+    line-height: 1.9;
+    text-size-adjust: 100%;
+  }
+  header { border-bottom: 1px solid var(--rule); padding-bottom: 1.5rem; margin-bottom: 2.5rem; }
+  h1 { font-size: 1.5rem; line-height: 1.5; margin: 0 0 .5rem; text-wrap: balance; }
+  .app { color: var(--ink-soft); font-size: .9rem; margin: 0; }
+  h2 {
+    font-size: 1.05rem; margin: 2.75rem 0 .75rem;
+    padding-left: .7rem; border-left: 3px solid var(--mark);
+    text-wrap: balance;
+  }
+  p { margin: 0 0 1rem; }
+  ul { margin: 0 0 1rem; padding-left: 1.3rem; }
+  li { margin-bottom: .4rem; }
+  strong { font-weight: 600; }
+  .lead {
+    background: var(--note-bg);
+    border-radius: 8px;
+    padding: 1.1rem 1.25rem;
+    margin: 0 0 1rem;
+  }
+  .lead p:last-child { margin-bottom: 0; }
+  footer {
+    margin-top: 3.5rem; padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    color: var(--ink-soft); font-size: .85rem;
+  }
+  a { color: var(--mark); }
+</style>
+
+<header>
+  <h1>プライバシーポリシー</h1>
+  <p class="app">EDR-Logger（GPS）／ 制定日：2026年8月16日</p>
+</header>
+
+<div class="lead">
+  <p><strong>このアプリは、記録した位置情報を開発者に送りません。</strong>記録はすべてお使いの端末の中にだけ保存されます。開発者は、あなたがどこにいたかを知る手段を持ちません。</p>
+</div>
+
+<h2>1. 記録する情報</h2>
+<p>本アプリは、行動の記録のために次のものを端末内に保存します。</p>
+<ul>
+  <li>位置情報（緯度・経度・精度・時刻・速度・進行方向・高度）</li>
+  <li>そこから組み立てた記録（滞在・停車・移動・記録が取れなかった時間帯）</li>
+  <li>電池の残量、気圧、動きの種類（徒歩・乗り物など）。<strong>いずれも記録の精度を上げ、電池の消費を抑えるために使います。</strong></li>
+</ul>
+<p>氏名・電話番号・メールアドレス・連絡先・写真・決済情報などは、一切取得しません。</p>
+
+<h2>2. 保存する場所と、その守り方</h2>
+<p>上記はすべて端末内のデータベースに保存され、<strong>そのデータベースはAES-256で暗号化</strong>されています。鍵は端末のキーチェーンにあり、端末の外へは出ません。</p>
+<p>本アプリは、開発者のサーバーを一切持ちません。あなたの記録が集まる場所は存在しません。</p>
+
+<h2>3. 外部へ出る場合（すべて利用者の操作が起点です）</h2>
+<p>次の場合に限り、記録が端末の外、または他のアプリへ渡ります。いずれも<strong>あなたが操作したときだけ</strong>起きます。</p>
+<ul>
+  <li><strong>書き出し・共有</strong>：「データ共有」画面でファイル（JSON・CSV・GPX・GeoJSON）を書き出し、共有先をあなたが選んだとき。</li>
+  <li><strong>クラウドバックアップ（有料機能）</strong>：あなたが保存先フォルダを選び、この機能をオンにしたとき、増えた分の記録がその保存先へ送られます。保存先はiCloud Drive等、<strong>あなた自身が管理するストレージ</strong>です。開発者はその内容にアクセスできません。</li>
+  <li><strong>端末内のファイルへの書き出し</strong>：本アプリは、記録の写しを自身の「書類」フォルダ（Exports）に置き続けます。<strong>これは端末の中だけで完結し、通信は発生しません。</strong>「ファイル」App から取り出せます。<strong>他のアプリが自動で読み取れる場所には置きません。</strong></li>
+</ul>
+
+<h2>4. 通信を行う場面</h2>
+<p>本アプリが自ら通信するのは、次の2つだけです。</p>
+<ul>
+  <li><strong>背景の地図</strong>：設定で「軌跡の背景に地図を敷く」をオンにしたときのみ、地図の画像を取得するためAppleのマップサービスと通信します。<strong>この通信に、記録した位置の履歴は含まれません。</strong></li>
+  <li><strong>有料機能の購入・復元</strong>：Apple（App Store）と通信します。支払い情報はAppleが扱い、開発者には渡りません。</li>
+</ul>
+
+<h2>5. 広告とトラッキング</h2>
+<p>広告は表示しません。利用者や端末を追跡する目的の識別子は使用せず、解析サービス（アクセス解析・クラッシュ収集を含む）も組み込んでいません。</p>
+
+<h2>6. 保存期間と削除</h2>
+<p>記録は、あなたが削除するまで端末内に残ります。</p>
+<ul>
+  <li>アプリ内の設定から、古い記録をまとめて削除できます。</li>
+  <li><strong>アプリを削除すれば、記録もすべて端末から消えます。</strong>開発者側に控えは残りません（そもそも送られていません）。</li>
+  <li>クラウドバックアップを使っていた場合、<strong>保存先に置かれたファイルは残ります。</strong>不要であれば、その保存先から削除してください。</li>
+</ul>
+
+<h2>7. 子どもの利用について</h2>
+<p>本アプリは特定の年齢層に向けたものではなく、子どもから個人情報を意図的に取得することもありません。</p>
+
+<h2>8. 本ポリシーの変更</h2>
+<p>内容を変更する場合は、このページを更新し、制定日を書き換えます。</p>
+
+<h2>9. お問い合わせ</h2>
+<p>i_factory221520@icloud.com</p>
+
+<footer>
+  EDR-Logger（GPS）／ © 2026 今井知行
+</footer>
