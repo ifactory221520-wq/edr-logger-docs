@@ -52,6 +52,33 @@
     color: var(--ink-soft); font-size: .85rem;
   }
   a { color: var(--mark); }
+  .battery { border: 1px solid var(--rule); border-radius: 10px; padding: 1.25rem 1.25rem .5rem; margin: 0 0 1.25rem; }
+  .battery-row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+    padding: .6rem 0; border-bottom: 1px solid var(--rule); }
+  .battery-row:last-of-type { border-bottom: none; }
+  .battery-label { font-weight: 600; }
+  .battery-label small { display: block; font-weight: 400; color: var(--ink-soft); font-size: .85rem; line-height: 1.6; }
+  .battery-value { font-size: 1.35rem; font-weight: 700; color: var(--mark); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .battery-value span { font-size: .8rem; font-weight: 400; color: var(--ink-soft); }
+  .battery-note { color: var(--ink-soft); font-size: .85rem; margin: .5rem 0 .75rem; }
+  .compare { margin: 0 0 1.25rem; }
+  .compare-day { font-size: .9rem; color: var(--ink-soft); margin: 1rem 0 .4rem; }
+  .compare-row { display: grid; grid-template-columns: 8.5rem 1fr 3.2rem; align-items: center; gap: .6rem; margin: .3rem 0; font-size: .9rem; }
+  .compare-row .who small { display: block; color: var(--ink-soft); font-size: .78rem; line-height: 1.5; }
+  .compare-row .bar { height: .7rem; border-radius: 4px; background: var(--rule); position: relative; overflow: hidden; }
+  .compare-row .bar i { position: absolute; inset: 0 auto 0 0; border-radius: 4px; background: var(--ink-soft); }
+  .compare-row.me .bar i { background: var(--mark); }
+  .compare-row.me .who { font-weight: 600; }
+  .compare-row .pct { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+  @media (max-width: 380px) { .compare-row { grid-template-columns: 6.8rem 1fr 3rem; } }
+  .plans { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin: 0 0 1.25rem; }
+  @media (max-width: 520px) { .plans { grid-template-columns: 1fr; } }
+  .plan { border: 1px solid var(--rule); border-radius: 10px; padding: 1rem 1.1rem .4rem; }
+  .plan.paid { border-color: var(--mark); }
+  .plan-name { font-weight: 700; margin: 0 0 .1rem; }
+  .plan-price { color: var(--mark); font-weight: 700; font-size: 1.15rem; margin: 0 0 .6rem; }
+  .plan-price small { color: var(--ink-soft); font-weight: 400; font-size: .8rem; }
+  .plan ul { font-size: .92rem; }
 </style>
 
 <header>
@@ -65,7 +92,105 @@
 
 <h2>このアプリについて</h2>
 <p>EDR-Logger（GPS）は、<strong>位置と時刻を記録し続けるためだけのアプリ</strong>です。記録は端末の中にだけ残り、開発者には送られません。</p>
-<p>止まっている間はGPSを完全に止め、歩き出したり車で動き出したりしたときだけ測位します。これが電池を持たせるための中心的な仕組みです。</p>
+
+<h2>一日じゅう記録しても、電池が持つように作っています</h2>
+<p>位置を記録し続けるアプリで、いちばんの問題は電池です。GPSを回し続けると、電池はどんどん減っていきます。</p>
+<p>そこでこのアプリは、<strong>あなたがいま止まっているのか、歩いているのか、乗り物で動いているのかを見分け、GPSは必要なときだけ使います。</strong>一日の大半は動いていない時間なので、そこで電池をほとんど使わないことが、持ちを決めます。</p>
+
+<div class="battery">
+  <div class="battery-row">
+    <div class="battery-label">止まっている間<small>GPSを止め、ごく粗い位置の見張りだけにしています</small></div>
+    <div class="battery-value">0.1〜0.7%<span>／1時間</span></div>
+  </div>
+  <div class="battery-row">
+    <div class="battery-label">移動している間<small>徒歩でも車でも、軌跡を細かく残しながら</small></div>
+    <div class="battery-value">2.2〜3.6%<span>／1時間</span></div>
+  </div>
+  <p class="battery-note">このアプリ自身が使った電池を、開発期間中に開発者の iPhone で実測した値です。機種や使い方により異なる場合があります。</p>
+</div>
+
+<h3>実際の iPhone の画面では</h3>
+<p>iPhone の［設定］→［バッテリー］に、その日いつもより電池を使ったアプリが並びます。開発者の iPhone では、こう表示されました。<strong>何時間も裏で記録し続けた日でも、1時間ほど電話をしたのと同じくらいです。</strong></p>
+<div class="compare">
+  <p class="compare-day">ある日（このアプリが裏で動いた時間が、いつもより2時間10分長かった日）</p>
+  <div class="compare-row me">
+    <div class="who">このアプリ<small>裏で ＋2時間10分</small></div>
+    <div class="bar"><i style="width: 29%"></i></div>
+    <div class="pct">9%</div>
+  </div>
+  <div class="compare-row">
+    <div class="who">ニュースアプリ<small>画面で ＋36分</small></div>
+    <div class="bar"><i style="width: 100%"></i></div>
+    <div class="pct">31%</div>
+  </div>
+  <p class="compare-day">別の日（このアプリが裏で動いた時間が、いつもより6時間46分長かった日）</p>
+  <div class="compare-row me">
+    <div class="who">このアプリ<small>裏で ＋6時間46分</small></div>
+    <div class="bar"><i style="width: 13%"></i></div>
+    <div class="pct">18%</div>
+  </div>
+  <div class="compare-row">
+    <div class="who">電話<small>通話 ＋1時間19分</small></div>
+    <div class="bar"><i style="width: 10%"></i></div>
+    <div class="pct">14%</div>
+  </div>
+  <div class="compare-row">
+    <div class="who">動画アプリ<small>画面で ＋1時間43分</small></div>
+    <div class="bar"><i style="width: 100%"></i></div>
+    <div class="pct">138%</div>
+  </div>
+  <p class="battery-note">「＋」は、その日にいつもより増えた時間です（iPhone の表示のとおり）。割合は同じ日のアプリどうしでだけ比べられます。日によって使い方が違うため、別の日の数字どうしは比べられません。</p>
+</div>
+
+<p>開発者自身も毎日使っていますが、<strong>電池が1日持たなかった日はほとんどありません。</strong>このアプリが使った電池は、iPhone の［設定］→［バッテリー］でいつでも確かめられます。</p>
+
+<h3>GPSを止めても、動き出しにはすぐ気づきます</h3>
+<p>GPSを止めると、今度は「動き出したことに気づけない」という問題が起きます。このアプリは、いくつもの手がかりを重ねて、止めたGPSをすぐに入れ直します。</p>
+<ul>
+  <li><strong>歩き出し</strong>：歩数計が歩数の増加を知らせます</li>
+  <li><strong>乗り物の発進</strong>：モーションセンサーが動き出しをとらえます</li>
+  <li><strong>場所の移動</strong>：その場所から離れたことを iPhone が知らせます</li>
+</ul>
+<p>電池の持ちと、記録の確かさ。この両方を同時に満たすことに、このアプリのほとんどの工夫を注いでいます。</p>
+
+<h2>記録はずっと無料です。有料なのは「記録を外へ持ち出す」機能だけです</h2>
+<p>位置と時刻を記録すること、記録をアプリの中で見ることは、<strong>すべて無料</strong>です。期限も、記録できる量の上限もありません。</p>
+
+<div class="plans">
+  <div class="plan">
+    <p class="plan-name">無料</p>
+    <p class="plan-price">0円 <small>ずっと</small></p>
+    <ul>
+      <li>位置・滞在・移動の記録（上限なし）</li>
+      <li>ホーム画面での今日の軌跡</li>
+      <li>「移動と滞在の記録」の一覧と、カレンダー</li>
+      <li>古い測位点の削除</li>
+    </ul>
+  </div>
+  <div class="plan paid">
+    <p class="plan-name">有料機能（買い切り）</p>
+    <p class="plan-price">780円 <small>一度だけ。毎月・毎年の支払いはありません</small></p>
+    <ul>
+      <li><strong>クラウド保存</strong>（クラウドバックアップ）</li>
+      <li>書き出し（データ共有）</li>
+    </ul>
+  </div>
+</div>
+
+<h3>クラウド保存とは</h3>
+<p>記録は iPhone の中にだけ置かれます。そのため、<strong>iPhone をなくしたり壊したりすると、記録も一緒に失われます。</strong></p>
+<p>クラウド保存をオンにすると、<strong>あなた自身の Google ドライブ・iCloud Drive・Dropbox など</strong>へ、記録を自動で写しておけます。</p>
+<ul>
+  <li><strong>手間がかかりません。</strong>充電中で Wi-Fi につながっているときに、前回から増えた分だけを自動で送ります。</li>
+  <li>送る間隔は「1日に1回」「1週間に1回」「1か月に1回」から選べます。［いま送る］で、すぐ送ることもできます。</li>
+  <li><strong>送り先は、あなたが選んだ保存先だけです。</strong>開発者のサーバーは存在せず、開発者があなたの記録を見ることはありません。</li>
+  <li>保存先には JSON 形式のファイルとして残るので、パソコンなどからも開けます。</li>
+  <li>保存先に届いた古い細かい軌跡を iPhone から消して、容量を空けることもできます（いつどこにいたかの記録は残ります）。</li>
+</ul>
+<p>設定は、アプリの［設定］→［クラウドバックアップ］から行います。保存先の選び方も、画面でご案内します。</p>
+
+<h3>書き出し（データ共有）</h3>
+<p>記録を CSV・GPX・JSON・GeoJSON 形式で書き出し、他の行動記録・分析アプリで使えます。期間や日付を指定して書き出せます。</p>
 
 <h2>よくある質問</h2>
 
@@ -81,9 +206,22 @@
 
 <h3>「ヘルスケア」の許可は何に使いますか</h3>
 <p>読み取るのは<strong>歩数だけ</strong>です。ほかの健康データは読みませんし、ヘルスケアへの書き込みもしません。</p>
-<p>止まっている間、このアプリは電池を節約するためにいったん終了します。そのままでは「また歩き出したこと」に気づけないため、<strong>ヘルスケアの歩数の更新を、アプリを起こし直す合図として使っています。</strong></p>
+<p>止まっている間、iPhone は電池を節約するためにこのアプリを眠らせることがあります。眠っている間は「また歩き出したこと」に気づけないため、<strong>ヘルスケアの歩数の更新を、アプリを起こし直す合図として使っています。</strong></p>
 <p><strong>許可しなくてもアプリは動きます。</strong>その場合、歩き出してから記録が再開するまでが少し遅くなります。</p>
 <p>あとから変えるときは、設定アプリ →［ヘルスケア］→［データアクセスとデバイス］→ EDR-Logger（GPS）です。</p>
+
+<h3>「記録が止まりました」という通知が来ました</h3>
+<p>アプリが閉じられたときに出ます（アプリの切り替え画面で上にスワイプした場合など）。<strong>通知をタップすると、その場で記録を再開します。</strong></p>
+<p>閉じられたままでも、100〜500mほど移動するとアプリは自動で起き直しますが、それまでの位置は残りません。<strong>記録を続けたいときは、アプリを上にスワイプして閉じないでください。</strong></p>
+<p>端末を再起動したあとは、この通知は出ません。<strong>再起動したら、アプリを一度開いてください。</strong></p>
+
+<h3>GPエスパーのウィジェットに合図を送る、とは何ですか</h3>
+<p>同じ開発者のアプリ「<a href="https://apps.apple.com/jp/app/id6806561781">GPエスパー</a>」のウィジェットを、ホームボタンを押したときやロックを解除したときにすぐ最新にするための仕組みです。このアプリが<strong>画面に出ない通知を出してすぐに消し</strong>、それを合図に GPエスパーが更新されます。</p>
+<p>GPエスパーを入れて、GPエスパーの側で即時更新をオンにしたときだけ働きます。<strong>GPエスパーが無ければ何もしません。</strong>記録には影響しません。止めたいときは、［設定］→［GPエスパーのウィジェットに合図を送る］をオフにしてください。</p>
+
+<h3>iPhone を再起動したあと、記録は戻りますか</h3>
+<p>はい。iPhone には再起動したときにアプリを自動で立ち上げる仕組みがありませんが、<strong>歩き出したり乗り物で動き出したりすると、数分のうちに記録が自動で再開します。</strong>止まっている間は「同じ場所にいた」として残ります。</p>
+<p>すぐに記録を戻したいときは、アプリを一度開いてください。</p>
 
 <h3>位置情報は「常に許可」でないといけませんか</h3>
 <p>はい。アプリを開いていない間も記録を続けるため、［常に］が必要です。［Appの使用中のみ］では、画面を閉じている間の記録が途切れます。</p>
@@ -95,6 +233,7 @@
   <li>地下鉄・地下街・建物の奥など、空が見えない場所</li>
   <li>端末の電源が切れていた、または機内モードだった</li>
   <li>位置情報の許可が外れていた</li>
+  <li>アプリを閉じた、または端末を再起動した（次に移動を検知するまで）</li>
 </ul>
 <p>なお、<strong>じっとしている間にGPSを止めているのは正常な動作</strong>です。その時間は空白ではなく「滞在」として残ります。</p>
 
