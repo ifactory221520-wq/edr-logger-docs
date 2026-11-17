@@ -1,0 +1,145 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+<title>Privacy Policy — EDR-Logger (GPS)</title>
+<style>
+  :root {
+    --ink: #1c1c1e;
+    --ink-soft: #55555b;
+    --ground: #ffffff;
+    --rule: #dcdce1;
+    --mark: #0b5c8a;
+    --note-bg: #f4f6f8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #e8e8ea;
+      --ink-soft: #a2a2a9;
+      --ground: #16171a;
+      --rule: #33343a;
+      --mark: #6fb8e0;
+      --note-bg: #1e2024;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #e8e8ea; --ink-soft: #a2a2a9; --ground: #16171a;
+    --rule: #33343a; --mark: #6fb8e0; --note-bg: #1e2024;
+  }
+  :root[data-theme="light"] {
+    --ink: #1c1c1e; --ink-soft: #55555b; --ground: #ffffff;
+    --rule: #dcdce1; --mark: #0b5c8a; --note-bg: #f4f6f8;
+  }
+
+  html { background: var(--ground); }
+  body {
+    margin: 0 auto;
+    max-width: 42rem;
+    padding: 3rem 1.25rem 5rem;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    line-height: 1.9;
+    text-size-adjust: 100%;
+  }
+  header { border-bottom: 1px solid var(--rule); padding-bottom: 1.5rem; margin-bottom: 2.5rem; }
+  h1 { font-size: 1.5rem; line-height: 1.5; margin: 0 0 .5rem; text-wrap: balance; }
+  .app { color: var(--ink-soft); font-size: .9rem; margin: 0; }
+  h2 {
+    font-size: 1.05rem; margin: 2.75rem 0 .75rem;
+    padding-left: .7rem; border-left: 3px solid var(--mark);
+    text-wrap: balance;
+  }
+  p { margin: 0 0 1rem; }
+  ul { margin: 0 0 1rem; padding-left: 1.3rem; }
+  li { margin-bottom: .4rem; }
+  strong { font-weight: 600; }
+  .lead {
+    background: var(--note-bg);
+    border-radius: 8px;
+    padding: 1.1rem 1.25rem;
+    margin: 0 0 1rem;
+  }
+  .lead p:last-child { margin-bottom: 0; }
+  footer {
+    margin-top: 3.5rem; padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    color: var(--ink-soft); font-size: .85rem;
+  }
+  a { color: var(--mark); }
+</style>
+
+<header>
+  <h1>Privacy Policy</h1>
+  <p class="app">EDR-Logger (GPS) / Effective: August 16, 2026 (last updated: November 17, 2026)</p>
+</header>
+
+<div class="lead">
+  <p><strong>This app does not send your recorded locations to the developer.</strong> All records are stored only on your device. The developer has no way of knowing where you have been.</p>
+</div>
+
+<h2>1. Information the app records</h2>
+<p>To keep a record of your day, the app stores the following on your device:</p>
+<ul>
+  <li>Location data (latitude, longitude, accuracy, time, speed, course, altitude)</li>
+  <li>Records built from it (stays, stops, moves, and periods when no location could be recorded)</li>
+  <li>Battery level, barometric pressure, type of motion (walking, in a vehicle, etc.), and <strong>step counts</strong>. <strong>All of these are used to improve recording accuracy and reduce battery use.</strong></li>
+</ul>
+<p><strong>About step counts:</strong> Step counts are used to tell whether you were walking or being carried by a vehicle during periods when no location could be recorded. They are read from the device's pedometer (Motion &amp; Fitness).</p>
+<p>Only if you allow it, the app also receives <strong>step-count update notifications from Health</strong>. While you are not moving, iPhone may suspend the app to save battery; these updates are used <strong>only as a signal that you have started walking again, so the app can wake up</strong>. Only step counts are read; no other health data is read, and nothing is written to Health. <strong>The app works without this permission</strong> (it just notices that you started walking a little later).</p>
+<p><strong>About notifications:</strong> Only if you allow it, the app shows <strong>a notification when recording has stopped because the app was closed</strong>. Notifications are created on the device and are never sent anywhere. <strong>The app works without this permission</strong> (you just won't be told that it was closed).</p>
+<p>Only if you also use the developer's companion app “GPEsper” (available in Japan) and turn on instant widget updates there, the app <strong>posts a notification that is not shown on screen and removes it immediately</strong>. It is used only as a signal to refresh GPEsper's widget and contains no location or records. It is never posted if GPEsper is not installed, and you can turn it off in Settings → [Signal the GPEsper Widget].</p>
+<p>The app never collects your name, phone number, email address, contacts, photos, or payment information.</p>
+
+<h2>2. Where the data is stored, and how it is protected</h2>
+<p>All of the above is stored in a database on your device, and <strong>the database is encrypted with AES-256</strong>. The key is kept in the device's keychain and never leaves the device.</p>
+<p>The app has no developer server of any kind. There is no place where your records are collected.</p>
+
+<h2>3. When data leaves the device (always started by you)</h2>
+<p>Records leave the device or are passed to another app only in the following cases, and <strong>only when you take action</strong>:</p>
+<ul>
+  <li><strong>Export and sharing</strong>: when you export a file (JSON, CSV, GPX, GeoJSON) from the Share Data screen and choose where to share it.</li>
+  <li><strong>Cloud Backup (Premium)</strong>: when you set up a destination and turn this feature on, newly added records are sent to that destination. The destination is <strong>storage you manage yourself</strong>, such as Google Drive or iCloud Drive. The developer cannot access its contents.</li>
+  <li><strong>Copies kept on the device</strong>: the app keeps a copy of your records in its own Documents folder (Exports). <strong>This stays entirely on the device and involves no network connection.</strong> You can open it from the Files app. <strong>It is not placed anywhere other apps can read automatically.</strong></li>
+</ul>
+
+<h2>4. When the app connects to the internet</h2>
+<p>The app itself connects to the internet in only these three cases:</p>
+<ul>
+  <li><strong>Map background</strong>: only when you turn on [Map Background for Tracks] in Settings, to fetch map images from Apple's map service. <strong>Your recorded location history is not included in this connection.</strong></li>
+  <li><strong>Buying or restoring Premium</strong>: the app connects to Apple (App Store). Payment information is handled by Apple and is not passed to the developer.</li>
+  <li><strong>Backup to Google Drive (Premium)</strong>: only when you choose Google Drive as the destination and sign in with your Google account.
+    <ul>
+      <li>You sign in on Google's own screen. <strong>The app never receives your password.</strong></li>
+      <li>The only permissions the app receives from Google are <strong>access to the folders and files the app itself creates</strong> (drive.file) and the email address of the signed-in account (to show it on screen). <strong>The app cannot see any other files in your Drive.</strong></li>
+      <li>Records are placed in <strong>the “EDR-Logger” folder in your Google Drive</strong>. The developer cannot access its contents.</li>
+      <li>The access token received from Google is stored only in the device's keychain. When you sign out in Settings, it is removed from the device and revoked on Google's side.</li>
+    </ul>
+  </li>
+</ul>
+<p>Place names for your stays are looked up from data built into the app. <strong>No location is sent anywhere to look them up.</strong></p>
+
+<h2>5. Advertising and tracking</h2>
+<p>The app shows no ads. It uses no identifiers for tracking users or devices, and includes no analytics services (including usage analytics and crash collection).</p>
+
+<h2>6. Retention and deletion</h2>
+<p>Records remain on your device until you delete them.</p>
+<ul>
+  <li>You can delete old records in bulk from Settings in the app.</li>
+  <li>Only if you turn on [Delete Backed-Up Records from iPhone] in Cloud Backup, the app automatically deletes from the device <strong>detailed tracks (location points) older than two months that it has confirmed reached your destination</strong> (off by default).</li>
+  <li><strong>If you delete the app, all records are removed from the device.</strong> No copy remains with the developer (none was ever sent).</li>
+  <li>If you used Cloud Backup, <strong>the files placed in your destination remain.</strong> Delete them from that destination if you no longer need them.</li>
+</ul>
+
+<h2>7. Children</h2>
+<p>The app is not directed at any particular age group and does not knowingly collect personal information from children.</p>
+
+<h2>8. Changes to this policy</h2>
+<p>If this policy changes, this page will be updated along with its date.</p>
+
+<h2>9. Contact</h2>
+<p>i_factory221520@icloud.com</p>
+
+<footer>
+  EDR-Logger (GPS) / © 2026 Tomoyuki Imai · <a href="../privacy.html">日本語</a>
+</footer>
