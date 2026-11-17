@@ -1,0 +1,274 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+<title>Support — EDR-Logger (GPS)</title>
+<style>
+  :root {
+    --ink: #1c1c1e;
+    --ink-soft: #55555b;
+    --ground: #ffffff;
+    --rule: #dcdce1;
+    --mark: #0b5c8a;
+    --note-bg: #f4f6f8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #e8e8ea; --ink-soft: #a2a2a9; --ground: #16171a;
+      --rule: #33343a; --mark: #6fb8e0; --note-bg: #1e2024;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #e8e8ea; --ink-soft: #a2a2a9; --ground: #16171a;
+    --rule: #33343a; --mark: #6fb8e0; --note-bg: #1e2024;
+  }
+  :root[data-theme="light"] {
+    --ink: #1c1c1e; --ink-soft: #55555b; --ground: #ffffff;
+    --rule: #dcdce1; --mark: #0b5c8a; --note-bg: #f4f6f8;
+  }
+
+  html { background: var(--ground); }
+  body {
+    margin: 0 auto; max-width: 42rem; padding: 3rem 1.25rem 5rem;
+    background: var(--ground); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px; line-height: 1.9; text-size-adjust: 100%;
+  }
+  header { border-bottom: 1px solid var(--rule); padding-bottom: 1.5rem; margin-bottom: 2.5rem; }
+  h1 { font-size: 1.5rem; line-height: 1.5; margin: 0 0 .5rem; text-wrap: balance; }
+  .app { color: var(--ink-soft); font-size: .9rem; margin: 0; }
+  h2 {
+    font-size: 1.05rem; margin: 2.75rem 0 .75rem;
+    padding-left: .7rem; border-left: 3px solid var(--mark); text-wrap: balance;
+  }
+  h3 { font-size: .98rem; margin: 1.75rem 0 .5rem; text-wrap: balance; }
+  p { margin: 0 0 1rem; }
+  ul, ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+  li { margin-bottom: .4rem; }
+  strong { font-weight: 600; }
+  .lead { background: var(--note-bg); border-radius: 8px; padding: 1.1rem 1.25rem; margin: 0 0 1rem; }
+  .lead p:last-child { margin-bottom: 0; }
+  .path { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: .92em; }
+  footer {
+    margin-top: 3.5rem; padding-top: 1.5rem; border-top: 1px solid var(--rule);
+    color: var(--ink-soft); font-size: .85rem;
+  }
+  a { color: var(--mark); }
+  .battery { border: 1px solid var(--rule); border-radius: 10px; padding: 1.25rem 1.25rem .5rem; margin: 0 0 1.25rem; }
+  .battery-row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+    padding: .6rem 0; border-bottom: 1px solid var(--rule); }
+  .battery-row:last-of-type { border-bottom: none; }
+  .battery-label { font-weight: 600; }
+  .battery-label small { display: block; font-weight: 400; color: var(--ink-soft); font-size: .85rem; line-height: 1.6; }
+  .battery-value { font-size: 1.35rem; font-weight: 700; color: var(--mark); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .battery-value span { font-size: .8rem; font-weight: 400; color: var(--ink-soft); }
+  .battery-note { color: var(--ink-soft); font-size: .85rem; margin: .5rem 0 .75rem; }
+  .compare { margin: 0 0 1.25rem; }
+  .compare-day { font-size: .9rem; color: var(--ink-soft); margin: 1rem 0 .4rem; }
+  .compare-row { display: grid; grid-template-columns: 9.5rem 1fr 3.2rem; align-items: center; gap: .6rem; margin: .3rem 0; font-size: .9rem; }
+  .compare-row .who small { display: block; color: var(--ink-soft); font-size: .78rem; line-height: 1.5; }
+  .compare-row .bar { height: .7rem; border-radius: 4px; background: var(--rule); position: relative; overflow: hidden; }
+  .compare-row .bar i { position: absolute; inset: 0 auto 0 0; border-radius: 4px; background: var(--ink-soft); }
+  .compare-row.me .bar i { background: var(--mark); }
+  .compare-row.me .who { font-weight: 600; }
+  .compare-row .pct { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+  @media (max-width: 380px) { .compare-row { grid-template-columns: 6.8rem 1fr 3rem; } }
+  .plans { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin: 0 0 1.25rem; }
+  @media (max-width: 520px) { .plans { grid-template-columns: 1fr; } }
+  .plan { border: 1px solid var(--rule); border-radius: 10px; padding: 1rem 1.1rem .4rem; }
+  .plan.paid { border-color: var(--mark); }
+  .plan-name { font-weight: 700; margin: 0 0 .1rem; }
+  .plan-price { color: var(--mark); font-weight: 700; font-size: 1.15rem; margin: 0 0 .6rem; }
+  .plan-price small { color: var(--ink-soft); font-weight: 400; font-size: .8rem; }
+  .plan ul { font-size: .92rem; }
+</style>
+
+<header>
+  <h1>Support</h1>
+  <p class="app">EDR-Logger (GPS)</p>
+</header>
+
+<div class="lead">
+  <p>If you need help, please contact us using the address under “Contact” below. A reply may take a few days.</p>
+</div>
+
+<h2>About this app</h2>
+<p>EDR-Logger (GPS) is <strong>an app that does one thing: keep recording your location and time</strong>. Records stay only on your device and are never sent to the developer.</p>
+
+<h2>Built to last all day on one charge</h2>
+<p>The biggest problem for an app that records your location all day is the battery. Keeping GPS on all the time drains it fast.</p>
+<p>So this app <strong>tells whether you are staying still, walking, or riding, and uses GPS only when it is needed.</strong> Most of a day is spent not moving, and using almost no battery during that time is what decides how long the battery lasts.</p>
+
+<div class="battery">
+  <div class="battery-row">
+    <div class="battery-label">While staying still<small>GPS is off; only a very coarse location watch keeps running</small></div>
+    <div class="battery-value">0.1–0.7%<span> / hour</span></div>
+  </div>
+  <div class="battery-row">
+    <div class="battery-label">While moving<small>On foot or by car, keeping a detailed track</small></div>
+    <div class="battery-value">2.2–3.6%<span> / hour</span></div>
+  </div>
+  <p class="battery-note">Battery used by the app itself, measured on the developer's iPhone during development. Results vary by device and usage.</p>
+</div>
+
+<h3>What it looks like on a real iPhone</h3>
+<p>In iPhone's Settings → Battery, the apps that used more battery than usual that day are listed. This is what the developer's iPhone showed. <strong>Even on a day the app recorded in the background for hours, it used about as much as an hour-long phone call.</strong></p>
+<div class="compare">
+  <p class="compare-day">One day (the app ran in the background 2 h 10 min longer than usual)</p>
+  <div class="compare-row me">
+    <div class="who">This app<small>background +2 h 10 min</small></div>
+    <div class="bar"><i style="width: 29%"></i></div>
+    <div class="pct">9%</div>
+  </div>
+  <div class="compare-row">
+    <div class="who">A news app<small>on screen +36 min</small></div>
+    <div class="bar"><i style="width: 100%"></i></div>
+    <div class="pct">31%</div>
+  </div>
+  <p class="compare-day">Another day (the app ran in the background 6 h 46 min longer than usual)</p>
+  <div class="compare-row me">
+    <div class="who">This app<small>background +6 h 46 min</small></div>
+    <div class="bar"><i style="width: 13%"></i></div>
+    <div class="pct">18%</div>
+  </div>
+  <div class="compare-row">
+    <div class="who">Phone<small>calls +1 h 19 min</small></div>
+    <div class="bar"><i style="width: 10%"></i></div>
+    <div class="pct">14%</div>
+  </div>
+  <div class="compare-row">
+    <div class="who">A video app<small>on screen +1 h 43 min</small></div>
+    <div class="bar"><i style="width: 100%"></i></div>
+    <div class="pct">138%</div>
+  </div>
+  <p class="battery-note">“+” is the extra time compared with a usual day, as shown by iPhone. Percentages can only be compared between apps on the same day; usage differs from day to day, so numbers from different days cannot be compared.</p>
+</div>
+
+<p>The developer uses the app every day, and <strong>the battery has almost never failed to last the day.</strong> You can check how much battery this app used anytime in iPhone's Settings → Battery.</p>
+
+<h3>GPS off, but it notices the moment you move</h3>
+<p>Turning GPS off creates a new problem: noticing that you have started moving again. The app combines several signals to switch GPS back on right away.</p>
+<ul>
+  <li><strong>Starting to walk</strong>: the pedometer reports new steps</li>
+  <li><strong>Pulling away in a vehicle</strong>: the motion sensors pick it up</li>
+  <li><strong>Leaving a place</strong>: iPhone tells the app you have left the area</li>
+</ul>
+<p>Battery life and a trustworthy record, at the same time. That is where almost all of this app's effort goes.</p>
+
+<h2>Recording is free, forever. Only taking your records out of the app is paid.</h2>
+<p>Recording your location and time, and viewing your records in the app, are <strong>completely free</strong>. No time limit and no cap on how much you record.</p>
+
+<div class="plans">
+  <div class="plan">
+    <p class="plan-name">Free</p>
+    <p class="plan-price">Free <small>forever</small></p>
+    <ul>
+      <li>Recording of locations, stays, and moves (no limit)</li>
+      <li>Today's track on the Home screen</li>
+      <li>The Moves &amp; Stays list and calendar</li>
+      <li>Deleting old location points</li>
+    </ul>
+  </div>
+  <div class="plan paid">
+    <p class="plan-name">Premium (one-time purchase)</p>
+    <p class="plan-price">Pay once <small>No monthly or yearly payments. The price for your country is shown in the App Store.</small></p>
+    <ul>
+      <li><strong>Cloud Backup</strong></li>
+      <li>Share Data (Export)</li>
+    </ul>
+  </div>
+</div>
+
+<h3>What Cloud Backup does</h3>
+<p>Your records are kept only on your iPhone. That means <strong>if your iPhone is lost or broken, your records are lost with it.</strong></p>
+<p>Turn on Cloud Backup and your records are copied automatically to <strong>your own Google Drive, iCloud Drive, or another storage service that appears in the Files app</strong>.</p>
+<ul>
+  <li><strong>No effort needed.</strong> While charging and on Wi-Fi, only what is new since the last backup is sent automatically.</li>
+  <li>Choose once a day, once a week, or once a month. You can also tap [Send Now] to send right away.</li>
+  <li><strong>Records go only to the destination you choose.</strong> There is no developer server, and the developer never sees your records.</li>
+  <li>Backups are saved as JSON files, so you can open them on a computer too.</li>
+  <li>You can also remove old detailed tracks that have already been backed up from your iPhone to free up space (the record of where you were and when is kept).</li>
+</ul>
+<p>Set it up in the app under Settings → Cloud Backup. The screen guides you through choosing a destination.</p>
+
+<h3>Share Data (Export)</h3>
+<p>Export your records as CSV, GPX, JSON, or GeoJSON and use them in other location-history or analysis apps. You can choose a range of dates or specific days.</p>
+
+<h2>Frequently asked questions</h2>
+
+<h3>Where do I allow “Motion &amp; Fitness”?</h3>
+<p>With this permission, <strong>the app can turn GPS off while you are staying still</strong>, which makes a big difference to battery life.</p>
+<p>If you have never been asked, a notice appears on the Home screen. Tap <strong>[Continue]</strong> there; a confirmation appears, so choose [OK].</p>
+<p>If you chose [Don't Allow] before, turn it back on in the Settings app:</p>
+<ol>
+  <li>Settings app → (scroll down) EDR-Logger (GPS)</li>
+  <li>Turn on [Motion &amp; Fitness]</li>
+</ol>
+<p><strong>If that item is not there, the device-wide switch is off.</strong> Go back to the top of the Settings app, turn on [Privacy &amp; Security] → [Motion &amp; Fitness] → [Fitness Tracking], then try the steps above again.</p>
+
+<h3>What is the Health permission used for?</h3>
+<p>The app reads <strong>step counts only</strong>. It reads no other health data and writes nothing to Health.</p>
+<p>While you are staying still, iPhone may suspend this app to save battery. While it is suspended, it cannot notice that you have started walking again, so <strong>Health step-count updates are used as a signal to wake the app up.</strong></p>
+<p><strong>The app works without this permission.</strong> Recording just resumes a little later after you start walking.</p>
+<p>To change it later: Settings app → [Health] → [Data Access &amp; Devices] → EDR-Logger (GPS).</p>
+
+<h3>I got a “Recording stopped” notification</h3>
+<p>It appears when the app has been closed (for example, swiped up in the App Switcher). <strong>Tap the notification to resume recording right away.</strong></p>
+<p>Even if it stays closed, the app wakes up on its own after you move about 100–500 m, but locations before that are not kept. <strong>To keep recording, please don't swipe the app away.</strong></p>
+<p>This notification does not appear after restarting your iPhone. <strong>After a restart, please open the app once.</strong></p>
+
+<h3>What is “Signal the GPEsper Widget”?</h3>
+<p>It is for the developer's companion app “GPEsper” (available in Japan). It does nothing unless GPEsper is installed and instant updates are turned on in GPEsper, and it does not affect recording. To stop it, turn off Settings → [Signal the GPEsper Widget].</p>
+
+<h3>Does recording come back after restarting my iPhone?</h3>
+<p>Yes. iPhone has no way to launch an app automatically after a restart, but <strong>once you start walking or moving in a vehicle, recording resumes on its own within a few minutes.</strong> While you stay put, that time is kept as being in the same place.</p>
+<p>To bring recording back right away, open the app once.</p>
+
+<h3>Does location access have to be “Always”?</h3>
+<p>Yes. To keep recording while the app is not open, [Always] is required. With [While Using the App], recording stops while the screen is off.</p>
+<p>Settings app → EDR-Logger (GPS) → [Location] → choose [Always], and also turn on [Precise Location].</p>
+
+<h3>There are blank periods in my record</h3>
+<p>In the following cases, no location can be obtained. The app <strong>keeps that time as “no location recorded”</strong> (it never fills it in or pretends you were not there).</p>
+<ul>
+  <li>Places where the sky is not visible, such as subways, underground malls, or deep inside buildings</li>
+  <li>The device was off or in Airplane Mode</li>
+  <li>Location permission was turned off</li>
+  <li>The app was closed or the device was restarted (until the next movement is detected)</li>
+</ul>
+<p>Note that <strong>turning GPS off while you stay still is normal behavior</strong>. That time is kept as a “stay”, not as a blank.</p>
+
+<h3>How can I make the battery last longer?</h3>
+<ul>
+  <li>Allow “Motion &amp; Fitness” (the most effective)</li>
+  <li>Turn off [Map Background for Tracks] in Settings (fewer map downloads)</li>
+</ul>
+<p>When the battery is low or the device is hot, the app automatically records a coarser track. <strong>It never stops recording.</strong></p>
+
+<h3>Premium stopped working after I bought it</h3>
+<p>Go to Settings → [About Premium] → <strong>[Restore Premium (If Already Purchased)]</strong>. You need to be signed in with the same Apple Account you used to buy it.</p>
+<p>It is a one-time purchase. There are no additional charges.</p>
+
+<h3>I want to take my records out</h3>
+<p>Export them as JSON, CSV, GPX, or GeoJSON from the Share Data screen. Exported files can also be opened from the Files app.</p>
+
+<h3>I want to delete my records</h3>
+<ul>
+  <li>Settings → [Delete Old Location Points] deletes only location points older than the date you choose (stays and moves are kept).</li>
+  <li>To delete everything, <strong>delete the app.</strong> All records on the device are deleted with it. <strong>This cannot be undone.</strong></li>
+</ul>
+
+<h3>Are my records sent to the developer?</h3>
+<p>No. See the <a href="privacy.html">Privacy Policy</a> for details.</p>
+
+<h2>Requirements</h2>
+<ul>
+  <li>iPhone with iOS 17.0 or later</li>
+</ul>
+
+<h2>Contact</h2>
+<p>i_factory221520@icloud.com</p>
+<p>When reporting a problem, it helps a lot to include <strong>when, roughly where, and what happened</strong>.</p>
+
+<footer>
+  EDR-Logger (GPS) / © 2026 Tomoyuki Imai · <a href="../support.html">日本語</a>
+</footer>
